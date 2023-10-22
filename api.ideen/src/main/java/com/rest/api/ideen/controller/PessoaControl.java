@@ -49,6 +49,7 @@ public class PessoaControl {
 
     @PostMapping
     public ResponseEntity<String> savePessoas(@RequestBody @Valid Pessoas pessoa) {
+        if (pessoa.validaIdadeMaxima()) {
         Optional<Pessoas> person = repository.findByCpf(pessoa.getCpf());
         if (person.isPresent()) {
             return ResponseEntity.badRequest().body("CPF already exist!");
@@ -59,7 +60,10 @@ public class PessoaControl {
             }
             return ResponseEntity.badRequest().body("Invalid CPF!");
         }
-    }
+             } else{
+                return ResponseEntity.badRequest().body("Invalid, date of birth greater than 150 years");
+                }
+      }  
 
 
     @PutMapping("/{id}")

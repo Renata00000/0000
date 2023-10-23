@@ -18,8 +18,12 @@ public class Pessoas {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String nome;
-    private int idade;
     private String cpf;
+    @Past
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
+    private LocalDate dataDeNascimento;
+    @Email
+    private String email;
     private String nacionalidade;
 
     public Long getId() {
@@ -31,22 +35,36 @@ public class Pessoas {
     public void setNome(String nome) {
         this.nome = nome;
     }
-    public int getIdade() {
-        return idade;
-    }
-    public void setIdade(int idade) {
-        this.idade = idade;
-    }
     public String getCpf() {
         return cpf;
-   }
-   public void setCpf(String cpf) {
+    }
+    public LocalDate getDataDeNascimento() {
+            return dataDeNascimento;
+    }
+
+    public void setDataDeNascimento(LocalDate dataDeNascimento) {
+            this.dataDeNascimento = dataDeNascimento;
+    }
+    public void setCpf(String cpf) {
        this.cpf = cpf;
-   }
-   public String getNacionalidade() {
+    }
+    public String getNacionalidade() {
         return nacionalidade;
+    }
+     public String getEmail() {
+            return email;
+    }
+
+     public void setEmail(String email) {
+            this.email = email;
     }
     public void setNacionalidade(String nacionalidade) {
         this.nacionalidade = nacionalidade;
     }
+
+      public boolean validaIdadeMaxima() {
+            LocalDate hoje = LocalDate.now();
+            int idadeMaxima = 150;
+            return dataDeNascimento != null && dataDeNascimento.plusYears(idadeMaxima).isAfter(hoje);
+        }
 }

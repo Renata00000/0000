@@ -88,6 +88,7 @@ public class PessoaControl {
                 p.setNacionalidade(pessoas.getNacionalidade());
             }
 
+
             Pessoas updatedPessoa = repository.save(p);
 
             return ResponseEntity.ok(updatedPessoa);

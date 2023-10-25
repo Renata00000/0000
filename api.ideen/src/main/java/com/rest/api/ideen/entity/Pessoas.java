@@ -14,11 +14,10 @@
     import java.time.LocalDate;
 
 
-
-    @Entity
     @Data
     @AllArgsConstructor
     @NoArgsConstructor
+    @Entity
     public class Pessoas {
 
         @Id
@@ -80,8 +79,10 @@
         public void setNacionalidade(String nacionalidade) {
             this.nacionalidade = nacionalidade;
         }
+
+//   verifica se data de nascimento e menor que 150
         public boolean validaIdadeMaxima() {
-            LocalDate hoje = LocalDate.now();
+            LocalDate hoje = LocalDate.now(); // representa data de hj
             int idadeMaxima = 150;
             return dataDeNascimento != null && dataDeNascimento.plusYears(idadeMaxima).isAfter(hoje);
         }

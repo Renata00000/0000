@@ -1,4 +1,4 @@
-# CRUD Java Spring Boot
+# CRUD Java Spring Boot.
 
 Este projeto é um CRUD (Create, Read, Update, Delete) de pessoas, desenvolvido em Java com Spring Boot. Ele inclui todas as requisições HTTP necessárias, mensagens de retorno e tratamentos de erro.
 
